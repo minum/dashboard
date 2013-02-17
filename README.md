@@ -56,7 +56,7 @@ var dashboard   = require('metrics-io-dashboard');
 var webapp      = express();
 
 var MONGO_URL = "mongodb://localhost/test";
-dashboard.listen(MONGO_URL, webapp);
+dashboard.listen(MONGO_URL, webapp, { prefix: '/metrics'});
 
 webapp.listen(5005);
 ~~~
