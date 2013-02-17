@@ -31,10 +31,12 @@ There are few ways you can access the dashboard.
 ### 2. Deploy into Cloud
 
 You can deploy dashboard into popular cloud providers in few minutes. First **download** or **clone** this repository into your local machine.
->Support for more cloud providers coming soon. 
 
 #### Heroku
 
+* You can deploy dashboard into heroku as you do with [other apps](https://devcenter.heroku.com/articles/nodejs)
+* But first edit `conf/config.json` for `basic-auth` settings and `mongo-url`
+* If you are thinking to use [mongodb addon on heroku](https://devcenter.heroku.com/articles/mongolab#adding-mongolab-to-your-heroku-app), add it first and get the `mongo-url` and configure it with `conf/config.json`
 
 ### 3. Deploy as a `nodejs` app manually
 

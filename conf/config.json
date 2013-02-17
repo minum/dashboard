@@ -1,0 +1,11 @@
+{
+	"basic-auth": {
+		"enabled": true,
+		"username": "user",
+		"password": "pass"
+	},
+
+	"port": 9010,
+
+	"mongo-url": "mongodb://localhost/metrics"
+}
