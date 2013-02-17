@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var optimist    = require('optimist');
-var dashboard   = require('../dashboard');
+var dashboard   = require('../lib/dashboard');
 
 var argv = optimist
     .usage('\nStandalone `mongo-metrics` Dashboard')

@@ -1,104 +1,56 @@
-mongo-metrics
-=============
+metrics-io-dashboard
+========================
 
-When its comes to metrics, aggregations plays a huge role. If that fails, then there is no use of collecting metrics. Here is the how `mongo-metrics` thinks about it.
+Dashboard for visualize and correlate metrics tracked via metrics.io.
 
-* There are sources who generate metrics
-* metrics will be collected with the awareness of the source
-* When it comes aggregations, metrics will be aggregated in 2 steps
-* It will first aggregate values in each source, then result will be aggregated 
-* function which used to aggregate metrics can be specified in runtime
-* result will be grouped into time resolutions
+![Dashboard](docs/dashboard.png)
 
 ## Design Decisions
 
-* Cloud Ready
-* Portable and Flexible Design
-* Simple to use
+* Cloud Ready - Easily deployable into cloud
+* Portable - Run as a standalone app locally
+* Embeddable - Easily embed into existing `nodejs` webapp
 
 ## Dependencies
 
 * Mongodb (2.1+)
 * NodeJs
 
-## Tracking Metrics
+## Accessing Dashboard 
 
->Currently tracking is only supported for `nodejs` apps. For other apps, you have to wait for UDP and HTTP APIs (patches are welcome)
+There are few ways you can access the dashboard.
 
-~~~js
-	var MongoMetrics = require('mongo-metrics');
+### 1. Standalone App
 
-	var MONGODB_URL = "mongodb://localhost/test";
-	var metrics = new MongoMetrics(MONGODB_URL);
-
-	metrics.track('no-of-users', 344, 'my-source', function(err) {
-
-	});
-~~~
-
-## Aggregate Metrics
-
->This API is for developer who need to play with metrics. Use dashboard(see below) which build on top of this API
-
-#### API
-
- 	@param {String} name - name of the metric
-        @param {Constant} resolution - resolution type
-            possible values: "DAY", "HOUR", "MINUTE", "FIVE_SECS"
-        @param {String} valueAggregator - aggregation function to be used for aggregating metric of the each source
-            possible values: "sum", "avg", "min", "max"
-        @param {String} sourceAggregator - aggregation function to be used for the aggregating sources(value from metricsAggregation)
-            possible values: "sum", "avg", "min", "max"
-        @param {Object} query - mongodb query for filtering out metrics
-            only supports date and source only
-        @param {Function} callback - callback function
-            callback(err, results)
-    
-    MongoMetrics.aggregate = function(name, resolution, valueAggregator, sourceAggregator, query, callback){}
-
-#### Example
-
-~~~js
-	
-var MongoMetrics = require('mongo-metrics');
-
-var MONGODB_URL = "mongodb://localhost/test";
-var metrics = new MongoMetrics(MONGODB_URL);
-
-metrics.aggregate('no-of-users', 'hour', 'avg', 'sum', {date: { $gte: 1361030882576 }}, function(err, result) {
-
-});
-~~~
-
-## Dashboard 
-
-With Dashboard you can correlate and visualize your metrics. There are few ways you can access the dashboard.
-
-![Dashboard](docs/dashboard.png)
-
-#### 1. Standalone App
-
-##### Install `mongo-metrics` binary via `npm`
-    npm install mongo-metrics -g
+##### Install `metrics-io-dashboard` binary via `npm`
+    npm install metrics-io-dashboard -g
 
 ##### Start Dashboard
-    mongo-metrics -m <mongodb url>
+    metrics-io-dashboard -m <mongodb url>
 
-#### 2. With NodeJS
+### 2. Deploy into Cloud
 
-~~~js
-var dashboard = require('mongo-metrics/dashboard');
+You can deploy dashboard into popular cloud providers in few minutes. First **download** or **clone** this repository into your local machine.
+>Support for more cloud providers coming soon. 
 
-var MONGO_URL = "mongodb://localhost/test";
-var PORT = 5005;
-dashboard.listen(MONGO_URL, PORT);
-~~~
+#### Heroku
 
-#### 3. Embed with an existing `express` webapp
+
+### 3. Deploy as a `nodejs` app manually
+
+* This repository is a deployable nodejs app and can be deployed as a typical `nodejs` app.
+* By default dashboard runs with `basic-auth` and can be configured at `/conf/config.json`
+* But it is recommend to run dashboard behind `nginx` with `ssl` and `basic_auth`.
+* You can configure `port` and `mongo-url` in `/conf/config.json`
+* After that run `start-dashboard.js` with nodejs
+	
+	node start-dashboard.js
+
+### 4. Embed with an existing `express` webapp
 
 ~~~js
 var express     = require('express');
-var dashboard   = require('mongo-metrics/dashboard');
+var dashboard   = require('metrics-io-dashboard');
 var webapp      = express();
 
 var MONGO_URL = "mongodb://localhost/test";
@@ -107,7 +59,7 @@ dashboard.listen(MONGO_URL, webapp);
 webapp.listen(5005);
 ~~~
 
-### Defining Graphs
+## Using Dashboard
 
 ![Dashboard](docs/configure-dashboard.png)
 
@@ -136,7 +88,3 @@ eg:- `CPU Usage | area | cpu | avg, sum | five_secs | 1000 * 60 * 15`
 * Configuration you do will be saved in the URL. 
 * So you can simply copy URL and share with others.
 * You can http://bit.ly or http://goo.gl to shorten the URL
-
-## Todo
-
-See: [Issues](https://github.com/arunoda/mongo-metrics/issues?labels=todo&milestone=none&page=1&state=open)

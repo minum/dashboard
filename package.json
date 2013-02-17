@@ -1,30 +1,30 @@
 {
-  "name": "mongo-metrics",
-  "preferGlobal": "true",
-  "version": "0.1.7",
-  "description": "Tracking Metrics with MongoDb",
+  "name": "metrics-io-dashboard",
+  "version": "0.1.1",
+  "description": "Dashboard for matrics.io",
   "keywords": [
     "metrics",
-    "mongodb",
+    "dashboard",
     "track"
   ],
   "author": "Arunoda Susiripala <arunoda.susiripala@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/arunoda/mongo-metrics.git"
+    "url": "git://github.com/matrics-io/dashboard.git"
   },
   "engines": {
     "node": ">= 0.8.x",
     "npm": ">= 1.1.x"
   },
-  "main": "./lib/mongoMetrics.js",
+  "main": "./lib/dashboard.js",
   "bin": {
-    "mongo-metrics": "./bin/mongo-metrics"
+    "metrics-io-dashboard": "./bin/metrics-io-dashboard"
   },
   "scripts": {
     "test": "test/index.js"
   },
   "dependencies": {
+    "metrics-io": "0.1.x",
     "mongodb": "1.2.x",
     "express": "3.x.x",
     "ejs": "0.8.x",
