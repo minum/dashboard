@@ -1,4 +1,4 @@
-metrics-io-dashboard
+minum-dashboard
 ========================
 
 Dashboard for visualize and correlate metrics tracked via [minum](http://minum.io)
