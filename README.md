@@ -1,7 +1,7 @@
 metrics-io-dashboard
 ========================
 
-Dashboard for visualize and correlate metrics tracked via metrics.io.
+Dashboard for visualize and correlate metrics tracked via [minum](http://minum.io)
 
 ![Dashboard](docs/dashboard.png)
 
@@ -22,11 +22,11 @@ There are few ways you can access the dashboard.
 
 ### 1. Standalone App
 
-##### Install `metrics-io-dashboard` binary via `npm`
-    npm install metrics-io-dashboard -g
+##### Install `minum-dashboard` binary via `npm`
+    npm install minum-dashboard -g
 
 ##### Start Dashboard
-    metrics-io-dashboard -m <mongodb url>
+    minum-dashboard -m <mongodb url>
 
 ### 2. Deploy into Cloud
 
@@ -52,7 +52,7 @@ You can deploy dashboard into popular cloud providers in few minutes. First **do
 
 ~~~js
 var express     = require('express');
-var dashboard   = require('metrics-io-dashboard');
+var dashboard   = require('minum-dashboard');
 var webapp      = express();
 
 var MONGO_URL = "mongodb://localhost/test";

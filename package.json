@@ -1,16 +1,17 @@
 {
-  "name": "metrics-io-dashboard",
-  "version": "0.1.1",
-  "description": "Dashboard for matrics.io",
+  "name": "minum-dashboard",
+  "version": "0.1.0",
+  "description": "Dashboard for minum",
   "keywords": [
     "metrics",
     "dashboard",
-    "track"
+    "track",
+    "minum"
   ],
   "author": "Arunoda Susiripala <arunoda.susiripala@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/matrics-io/dashboard.git"
+    "url": "git://github.com/minum/dashboard.git"
   },
   "engines": {
     "node": ">= 0.8.x",
@@ -18,13 +19,13 @@
   },
   "main": "./lib/dashboard.js",
   "bin": {
-    "metrics-io-dashboard": "./bin/metrics-io-dashboard"
+    "minum-dashboard": "./bin/minum-dashboard"
   },
   "scripts": {
     "test": "test/index.js"
   },
   "dependencies": {
-    "metrics-io": "0.1.x",
+    "minum": "0.1.x",
     "mongodb": "1.2.x",
     "express": "3.x.x",
     "ejs": "0.8.x",

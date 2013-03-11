@@ -3,7 +3,7 @@ var optimist    = require('optimist');
 var dashboard   = require('../lib/dashboard');
 
 var argv = optimist
-    .usage('\nStandalone `mongo-metrics` Dashboard')
+    .usage('\nStandalone `minum-dashboard`')
     .demand('m')
     .describe('m', 'MongoDB connection URL')
     .describe('p', 'Port running dashboard')
@@ -11,7 +11,7 @@ var argv = optimist
     .describe('c', 'MongoDB collection for metrics')
     .default('c', 'metrics')
     .describe('t', "Title of the Dashboard")
-    .default('t', 'Mongo Metrics')
+    .default('t', 'Minum Dashboard')
     .argv;
 
 var mongoUrl = argv.m;
@@ -21,5 +21,5 @@ var options = {
     title: argv.t
 };
 
-console.info("Starting `mongo-metrics` dashboard on port: " + port);
+console.info("Starting `minum-dashboard` on port: " + port);
 dashboard.listen(mongoUrl, port, options);

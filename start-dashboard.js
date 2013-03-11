@@ -20,7 +20,7 @@ var mongoUrl = config['mongo-url'];
 //for heroku support
 var port = process.env.PORT || config.port;
 
-console.info("starting metrics.io dashboard on port: ", port);
+console.info("starting minum dashboard on port: ", port);
 
 dashboard.listen(mongoUrl, app);
 app.listen(port);
