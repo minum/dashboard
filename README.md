@@ -74,9 +74,9 @@ There is no UI for defining graphs. But we have simple and flexible syntax to de
 
 Here is how you define a graph. 
 
-    <title for graph> | <graph-type> | <metric-name> | <value-aggregator>, <source-aggregator> | <resolution> | <time-length>
+    <title for graph> | <graph-type> | <metric-name> | <value-aggregator>, <source-aggregator> | <resolution> | <time-length> | <list of sources - optional >
 
-eg:- `CPU Usage | area | cpu | avg, sum | five_secs | 1000 * 60 * 15`
+eg:- `CPU Usage | area | cpu | avg, sum | five_secs | 1000 * 60 * 15 | source1, source2`
 
 * Supported values for `graph-type` : `area`, `line`
 * Supported values for `value-aggregator` : sum, avg, min, max
